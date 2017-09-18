@@ -477,7 +477,7 @@ automacro thiefquest5 {
 		]
 		do move moc_prydb1 39 125
 		pause 100
-        	do conf autoTalkCont 0
+        	do conf autoTalkCont 1
 		pause 1
 		do talknpc 42 133
 		pause 0.8
