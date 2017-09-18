@@ -1,0 +1,645 @@
+###############################
+###Talk Outside with Old Man###
+###############################
+
+automacro training {
+    exclusive 1
+    BaseLevel == 1
+    QuestInactive 7117
+    overrideAI 1
+    run-once 1
+    call {
+        [
+		do conf sleepTime 50000
+		do conf lockMap none
+		do conf saveMap none
+        do conf autoTalkCont 0
+        do conf route_randomWalk 0
+        do conf attackAuto 0
+        do conf itemsTakeAuto 0
+        do conf itemsGatherAuto 0
+        do conf skillsAddAuto 1
+        do conf skillsAddAuto_list NV_BASIC 9
+        do conf statsAddAuto 1
+        do conf statsAddAuto_list 11 str, 11 dex, 11 agi, 20 str, 20 dex, 30 agi
+        ]
+        do move 147 112
+        pause 20
+        do talknpc 148 112 c c c c c c c c c r1 c c r1 c c r0 c c r0 c c r1 c c r1 c c 
+        pause 40
+        do conf autoTalkCont 1
+        do talknpc 148 112 c
+        pause 10
+        do move 100 27
+        pause 10
+        do talknpc 100 29 r0
+        do talk cont
+    }
+}
+
+###############################
+###Talk Inside with Sprakki####
+###############################
+
+automacro training1 {
+    exclusive 1
+    BaseLevel == 1
+    QuestActive 7117
+    overrideAI 1
+    run-once 1
+    call {
+        pause 10
+        do talknpc 100 29 r0
+        pause 0.8
+        do talk cont
+    }
+}
+
+###############################
+####Talk Inside with Brade#####
+###############################
+
+automacro training2 {
+    exclusive 1
+    BaseLevel == 2
+    QuestActive 7118
+    NpcNear /Brade/
+    overrideAI 1
+    run-once 1
+    call {
+        do talknpc 100 105 r0
+        pause 5
+        do talk cont
+    }
+}
+
+###############################
+#######Equip Your Gear#########
+###############################
+
+automacro training3 {
+    exclusive 1
+    BaseLevel == 3
+    QuestActive 7119
+    overrideAI 1
+    run-once 1
+    call {
+        do eq Somber Novice Hood
+        do eq Novice Slippers
+        do eq Novice False Eggshell
+        do eq Novice Guard
+        do eq Tattered Novice Ninja Suit
+        do eq Novice Main-Gauche
+        pause 15
+        do talknpc 100 105 r0
+        pause 0.8
+        do talk cont
+    }
+}
+
+###############################
+####Talk Inside with Jihnwa####
+###############################
+
+automacro training4 {
+    exclusive 1
+    BaseLevel == 4
+    QuestActive 7120
+    overrideAI 1
+    run-once 1
+    call {
+        pause 10
+        do move 115 118
+        pause 15
+        do talknpc 115 120 r0
+        pause 0.8
+        do talk cont
+        pause 10
+        do move 100 110
+        pause 10
+        do talknpc 100 105 r0
+        pause 0.8
+        do talk cont
+        pause 10
+        do move 74 106
+        pause 10
+        do talknpc 33 172 r0
+        pause 0.8
+        do talk cont
+        pause 10
+        do eq Novice Adventurer's Suit [1]
+    }
+}
+
+################################
+###Talk Inside with Chocolate###
+################################
+
+automacro training5 {
+    exclusive 1
+    QuestActive 7121
+    overrideAI 1
+    run-once 1
+    call {
+        pause 5
+        do conf autoTalkCont 0
+        pause 5
+        do talknpc 30 176 c c c c c c c c c c c c c c c r4 w1 c
+        pause 30
+        do conf autoTalkCont 1
+        pause 5
+        do talknpc 33 176 r0
+        pause 0.8
+        do talk cont
+        pause 10
+        do talknpc 36 176 r0
+        pause 0.8
+        do talk cont
+        pause 10
+        do talknpc 33 172 r0
+        pause 0.8
+        do talk cont
+        pause 10
+    }
+}
+
+################################
+#####Talk Inside with Brade#####
+################################
+
+automacro training6 {
+    exclusive 1
+    BaseLevel > 4
+    QuestInactive 7121
+    NpcNear /Brade/
+    overrideAI 1
+    run-once 1
+    call {
+    do conf route_randomWalk 0
+        pause 10
+        do move 97 30
+        do talknpc 96 30
+        pause 0.8
+        do talk cont
+        pause 10
+        do conf route_randomWalk 1
+        pause 5
+    }
+}
+
+###############################
+###Changing Config To Attack###
+###############################
+
+automacro training7 {
+    exclusive 1
+    QuestActive 7122
+    overrideAI 1
+    run-once 1
+    call {
+        [
+        do conf attackAuto 2
+        do conf autoRestartMin 10800
+        do conf autoRestartSeed 3600
+        do conf autoRestartSleep 1
+        do conf autoSleepMin 15
+        do conf autoSleepSeed 15
+        do conf dcOnPM 0
+        do conf dcOnMute 0
+        do conf itemsTakeAuto 2
+        do conf itemsGatherAuto 2
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf route_randomWalk 1
+		do conf lockMap new_1-3
+        do conf sellAuto 1
+        do conf sellAuto_npc new_1-3 100 50
+        do conf sellAuto_distance 8
+        do conf sellAuto_npc_steps s e
+        do conf storageAuto 0
+		do conf itemsGatherAuto 0
+        ]
+    }
+}
+
+###############################
+####Training Grounds Quests####
+###############################
+
+automacro training8 {
+    exclusive 1
+	QuestActive 7122
+    InInventory "Jellopy" >= 6
+    JobID 0
+    overrideAI 1
+    run-once 1
+    call {
+        do conf route_randomWalk 0
+        do conf attackAuto 0
+        do move 97 30
+        pause 20
+        do talknpc 96 30
+        pause 0.8
+        do talk cont
+        pause 10
+        do move 107 41
+        pause 10
+        do conf autoTalkCont 0
+        pause 2
+        do talknpc 97 41 c r2 c c c c c
+        pause 10
+        do talknpc 101 41 c r2 c c c
+        pause 10
+        do talknpc 105 41 c r2 c c c
+        pause 10
+        do talknpc 109 41 c r2 c c c
+        pause 10
+        do talknpc 109 41 c c c c r0 c c c c c r0 c c c
+        pause 20
+        [
+        do eq Somber Novice Hood
+        do eq Novice Adventurer's Suit [1]
+        do eq Novice Slippers
+        do eq Novice False Eggshell
+        do eq Novice Guard
+        do eq Novice Cutter [3]
+        do eq Merchant Manual
+        ]
+        pause 5
+		[       
+		do conf route_randomWalk 1
+        do conf attackAuto 2
+        do conf itemsGatherAuto 2
+        do conf itemsMaxWeight_sellOrStore 15
+		]
+	}
+}
+
+###############################
+###Training Grounds Complete###
+###############################
+
+automacro training9 {
+    exclusive 1
+    QuestActive 7123, 7124, 7126, 7127
+    JobID 0
+    Zeny >= 300
+    overrideAI 1
+    run-once 1
+    call {
+		[
+		do conf route_randomWalk 0
+		do conf attackAuto 0
+		do conf itemsGatherAuto 0
+		]	
+		do move 107 41
+		pause 30
+		pause 2
+		do talknpc 97 41 c c r3 c 
+		pause 10
+		do talknpc 101 41 c c r3 c
+		pause 10
+		do talknpc 105 41 c c r3 c
+		pause 10
+		do autosell
+		pause 10
+		do talknpc 109 41 c c c c r3 c
+		pause 10
+		[
+		do conf route_randomWalk 1
+		do conf attackAuto 2
+		do conf itemsGatherAuto 2
+		]
+	}
+}
+
+###############################
+###Picks a Class to Teleport###
+###############################
+
+automacro training10 {
+    exclusive 1
+    BaseLevel >= 12
+    QuestInactive 7123, 7124, 7126, 7127, 1013
+    JobLevel = 10
+    JobID 0
+    overrideAI 1
+    run-once 1
+    call {
+		[
+        do conf route_randomWalk 0
+        do conf attackAuto 0
+        do conf itemsGatherAuto 0
+		do conf lockMap none
+        ]
+		do move 95 175
+        pause 30
+        do talknpc 100 29 c c c c c c r0 c r2 c c c c c
+        pause 30
+    }
+}
+
+#For each respective jobs, please change last response accordingly.
+#Swordsman 0
+#Acolyte 1
+#Thief 2
+#Merchant 3
+#Archer 4
+#Mage 5
+
+###############################
+####Changing  job to Thief0####
+###############################
+
+automacro thiefquest0 {
+	InMap moc_ruins, morocc
+	QuestInactive 1013
+	JobID 0 
+	overrideAI 1
+	run-once 1
+	call {
+		do move moc_prydb1 39 125
+		pause 2
+		release thiefquest0
+	}
+	timeout 20
+}
+
+###############################
+####Changing  job to Thief1####
+###############################
+
+automacro thiefquest1 {
+	exclusive 1
+	InMap moc_prydb1
+	IsInCoordinate 39 125
+	QuestInactive 1013
+	JobID 0 
+	overrideAI 1
+	run-once 1
+	call {
+		do talknpc 39 129 c r0 c c r0 c c r0 c c c r0 c c c c r0 c c
+		pause 20
+	}
+}
+
+###############################
+####Changing  job to Thief2####
+###############################
+
+automacro thiefquest2 {
+	exclusive 1
+	JobID 0 
+	QuestActive 1013
+	InInventory "Orange Net Mushroom" < 3
+	InInventory "Orange Gooey Mushroom" < 12
+	overrideAI 1
+	run-once 1
+	call {
+		do move moc_ruins 143 127
+		pause 90
+		do talknpc 141 125 r0
+		pause 0.8
+		do talk cont
+		pause 4
+		[
+		do conf dcOnPM 0
+        do conf dcOnMute 0
+		do conf attackAuto 2
+        do conf route_randomWalk 1
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf sellAuto 0
+        do conf storageAuto 0
+		do conf itemsGatherAuto 2
+		do conf attackAuto_party 1 
+		do conf autoResponse 1
+		do conf avoidGM_near 0
+		do conf avoidGM_talk 0
+		do conf dcOnServerShutDown 1
+		do conf dcOnServerClose 1
+        do conf itemsTakeAuto 2		
+        do conf itemsGatherAuto 2
+		do conf itemsMaxWeight_sellOrStore 49
+		do conf lockMap none
+		do conf statsAddAuto 1
+		do conf statsAddAuto_list 30 agi, 30 dex, 30 str, 80 agi, 60 str, 90 agi
+		do conf partyAuto 1
+		do conf partyAutoShare 1
+		do conf partyAutoShareItem 1
+		do conf RecoverAll.block Meat, Yellow Herb, White Herb, Red Herb, Apple, Monster's Feed, Potato, Red Potion, Orange Potion, Milk, Pet Food, Apple Juice, Aloe Leaflet, Candy, Candy Cane
+		do conf RecoverAll.hp < 70%
+		do conf RecoverAll.disabled 0
+		]
+		pause 10
+	}
+	timeout 20
+}
+
+###############################
+####Changing  job to Thief4####
+###############################
+
+automacro thiefquest4 {
+	exclusive 1
+	JobID 0
+	InMap job_thief1
+	QuestActive 1013
+	InInventory "Orange Net Mushroom" > 3
+	InInventory "Orange Gooey Mushroom" > 12
+	overrideAI 1
+	run-once 1
+	call {
+		pause 1
+		do respawn
+		pause 5
+	}
+}
+
+###############################
+####Changing  job to Thief5####
+###############################
+
+automacro thiefquest5 {
+	JobID 0
+	InMap morocc, moc_ruins
+	QuestActive 1013
+	InInventory "Orange Net Mushroom" > 3
+	InInventory "Orange Gooey Mushroom" > 12
+	run-once 1
+	call {
+		[
+		do conf attackAuto 0
+        do conf route_randomWalk 0
+		do conf itemsTakeAuto 0	
+        do conf itemsGatherAuto 0
+		do conf autoResponse 1
+		do conf autoTalkCont 1
+		]
+		do move moc_prydb1 39 125
+		pause 100
+        do conf autoTalkCont 0
+		pause 1
+		do talknpc 42 133
+		pause 0.8
+		do talk cont
+		pause 10
+		log Congratulations, you are now a thief!
+		pause 10
+		do respawn
+		pause 10
+		do move payon
+		pause 3
+		release thiefquest4
+	}
+}
+		
+#Congratulations!, you are now a thief.#
+#Time to Level
+
+###############################
+######Save in Payon First######
+###############################
+
+automacro Meet_Kafra {
+	exclusive 1
+	JobID 6
+	JobLevel = 1
+	InMap payon
+	NpcNotNear /Kafra Employee/i
+	run-once 1
+	call {
+		do move 183 107 payon
+		pause 5
+	}
+}
+
+automacro Meet_Kafra2 {
+	exclusive 1
+	JobID 6
+	JobLevel = 1
+	InMap payon
+	InSaveMap 0
+	NpcNear /Kafra Employee/i
+	run-once 1
+	call {
+		do talknpc 181 104 c r0 c
+		pause 5
+		[		
+		do conf dcOnPM 0
+        do conf dcOnMute 0
+		do conf attackAuto 2
+        do conf route_randomWalk 1
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf sellAuto 0
+        do conf storageAuto 1
+		do conf itemsGatherAuto 2
+		do conf attackAuto_party 1 
+		do conf autoResponse 1
+		do conf avoidGM_near 2
+		do conf avoidGM_talk 1
+		do conf dcOnServerShutDown 1
+		do conf dcOnServerClose 1
+        do conf itemsTakeAuto 2		
+        do conf itemsGatherAuto 2
+		do conf itemsMaxWeight_sellOrStore 49
+		do conf lockMap none
+		do conf statsAddAuto 1
+		do conf statsAddAuto_list 30 agi, 30 dex, 30 str, 80 agi, 60 str, 90 agi, 90 str
+		do conf skillsAddAuto 1
+        do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
+		do conf partyAuto 1
+		do conf partyAutoShare 1
+		do conf partyAutoShareItem 1
+		do conf RecoverAll.block Meat, Yellow Herb, White Herb, Red Herb, Apple, Monster's Feed, Potato, Red Potion, Orange Potion, Milk, Pet Food, Apple Juice, Aloe Leaflet, Candy, Candy Cane
+		do conf RecoverAll.hp < 70%
+		do conf RecoverAll.disabled 0
+		]
+	}
+}
+
+###############################
+######Equip your OP gears######
+###############################
+
+automacro Equip_gear {
+exclusive 1
+JobID 6
+JobLevel 1
+IsNotEquippedID armor 2393
+IsNotEquippedID rightHand 13040
+overrideAI 1
+run-once 1
+call {
+	do eq Novice Adventurer's Suit [1]
+	do eq Novice Cutter [3]
+	}
+}
+
+###############################
+#####Payon Dungeon 00 12-30####
+###############################
+		
+automacro Config_Key {
+	exclusive 1
+	JobID 6
+	ConfigKeyNotExist Leveling
+	run-once 1
+	call {
+		$wantedkey = $.ConfigKeyNotExistLastKey
+        $wantedvalue = none
+        call AddMissingKey
+	}
+}		
+
+macro AddMissingKey {
+    add_key("$wantedkey","$wantedvalue")
+}
+
+automacro Payon_Dungeon {
+	exclusive 1
+	JobID 6
+	BaseLevel 10..30
+	ConfigKeyNot Leveling payon_cave
+	run-once 1
+	call map_change "payon_cave"
+}
+
+###############################
+#####Elder Willow to Job 50####
+###############################
+
+automacro Elder_Willow {
+	exclusive 1
+	JobID 6
+	BaseLevel > 30
+	JobLevel < 50
+	ConfigKeyNot Leveling elder_willow
+	run-once 1
+	call map_change "elder_willow"
+}
+
+macro map_change {
+	do conf -f Leveling $.param[0]
+	switch ( $.param[0] ) {
+		case (=~ /payon_cave/i) {
+			[
+			do conf lockMap pay_dun00
+			do conf storageAuto_npc payon 175 226
+			do conf storageAuto_distance 8
+			do conf storageAuto_npc_type 1
+			]
+		}
+		case (=~ /elder_willow/i) {
+			[
+			do conf lockMap pay_fild08
+			do conf storageAuto_npc payon 181 104
+			do conf storageAuto_distance 8
+			do conf storageAuto_npc_type 1
+			]
+		}
+	}
+}
+
+#For any errors pleave leave a message
