@@ -211,7 +211,7 @@ automacro training7 {
         do conf sitAuto_hp_lower 0
         do conf sitAuto_hp_upper 0
         do conf route_randomWalk 1
-		do conf lockMap new_1-3
+	do conf lockMap new_1-3
         do conf sellAuto 1
         do conf sellAuto_npc new_1-3 100 50
         do conf sellAuto_distance 8
@@ -266,12 +266,12 @@ automacro training8 {
         do eq Merchant Manual
         ]
         pause 5
-		[       
-		do conf route_randomWalk 1
+	[       
+	do conf route_randomWalk 1
         do conf attackAuto 2
         do conf itemsGatherAuto 2
         do conf itemsMaxWeight_sellOrStore 15
-		]
+	]
 	}
 }
 
@@ -287,29 +287,29 @@ automacro training9 {
     overrideAI 1
     run-once 1
     call {
-		[
-		do conf route_randomWalk 0
-		do conf attackAuto 0
-		do conf itemsGatherAuto 0
-		]	
-		do move 107 41
-		pause 30
-		pause 2
-		do talknpc 97 41 c c r3 c 
-		pause 10
-		do talknpc 101 41 c c r3 c
-		pause 10
-		do talknpc 105 41 c c r3 c
-		pause 10
-		do autosell
-		pause 10
-		do talknpc 109 41 c c c c r3 c
-		pause 10
-		[
-		do conf route_randomWalk 1
-		do conf attackAuto 2
-		do conf itemsGatherAuto 2
-		]
+	[
+	do conf route_randomWalk 0
+	do conf attackAuto 0
+	do conf itemsGatherAuto 0
+	]	
+	do move 107 41
+	pause 30
+	pause 2
+	do talknpc 97 41 c c r3 c 
+	pause 10
+	do talknpc 101 41 c c r3 c
+	pause 10
+	do talknpc 105 41 c c r3 c
+	pause 10
+	do autosell
+	pause 10
+	do talknpc 109 41 c c c c r3 c
+	pause 10
+	[
+	do conf route_randomWalk 1
+	do conf attackAuto 2
+	do conf itemsGatherAuto 2
+	]
 	}
 }
 
@@ -326,13 +326,13 @@ automacro training10 {
     overrideAI 1
     run-once 1
     call {
-		[
+	[
         do conf route_randomWalk 0
         do conf attackAuto 0
         do conf itemsGatherAuto 0
-		do conf lockMap none
+	do conf lockMap none
         ]
-		do move 95 175
+	do move 95 175
         pause 30
         do talknpc 100 29 c c c c c c r0 c r2 c c c c c
         pause 30
@@ -378,8 +378,8 @@ automacro thiefquest1 {
 	overrideAI 1
 	run-once 1
 	call {
-		do talknpc 39 129 c r0 c c r0 c c r0 c c c r0 c c c c r0 c c
-		pause 20
+	do talknpc 39 129 c r0 c c r0 c c r0 c c c r0 c c c c r0 c c
+	pause 20
 	}
 }
 
@@ -404,13 +404,13 @@ automacro thiefquest2 {
 		pause 4
 		[
 		do conf dcOnPM 0
-        do conf dcOnMute 0
+       		do conf dcOnMute 0
 		do conf attackAuto 2
-        do conf route_randomWalk 1
-        do conf sitAuto_hp_lower 0
-        do conf sitAuto_hp_upper 0
-        do conf sellAuto 0
-        do conf storageAuto 0
+       		do conf route_randomWalk 1
+       		do conf sitAuto_hp_lower 0
+       		do conf sitAuto_hp_upper 0
+       		do conf sellAuto 0
+       		do conf storageAuto 0
 		do conf itemsGatherAuto 2
 		do conf attackAuto_party 1 
 		do conf autoResponse 1
@@ -418,8 +418,8 @@ automacro thiefquest2 {
 		do conf avoidGM_talk 0
 		do conf dcOnServerShutDown 1
 		do conf dcOnServerClose 1
-        do conf itemsTakeAuto 2		
-        do conf itemsGatherAuto 2
+       		do conf itemsTakeAuto 2		
+       		do conf itemsGatherAuto 2
 		do conf itemsMaxWeight_sellOrStore 49
 		do conf lockMap none
 		do conf statsAddAuto 1
@@ -433,7 +433,6 @@ automacro thiefquest2 {
 		]
 		pause 10
 	}
-	timeout 20
 }
 
 ###############################
@@ -470,15 +469,15 @@ automacro thiefquest5 {
 	call {
 		[
 		do conf attackAuto 0
-        do conf route_randomWalk 0
+       		do conf route_randomWalk 0
 		do conf itemsTakeAuto 0	
-        do conf itemsGatherAuto 0
+        	do conf itemsGatherAuto 0
 		do conf autoResponse 1
 		do conf autoTalkCont 1
 		]
 		do move moc_prydb1 39 125
 		pause 100
-        do conf autoTalkCont 0
+        	do conf autoTalkCont 0
 		pause 1
 		do talknpc 42 133
 		pause 0.8
@@ -527,13 +526,13 @@ automacro Meet_Kafra2 {
 		pause 5
 		[		
 		do conf dcOnPM 0
-        do conf dcOnMute 0
+        	do conf dcOnMute 0
 		do conf attackAuto 2
-        do conf route_randomWalk 1
-        do conf sitAuto_hp_lower 0
-        do conf sitAuto_hp_upper 0
-        do conf sellAuto 0
-        do conf storageAuto 1
+        	do conf route_randomWalk 1
+        	do conf sitAuto_hp_lower 0
+        	do conf sitAuto_hp_upper 0
+        	do conf sellAuto 0
+        	do conf storageAuto 1
 		do conf itemsGatherAuto 2
 		do conf attackAuto_party 1 
 		do conf autoResponse 1
@@ -541,14 +540,14 @@ automacro Meet_Kafra2 {
 		do conf avoidGM_talk 1
 		do conf dcOnServerShutDown 1
 		do conf dcOnServerClose 1
-        do conf itemsTakeAuto 2		
-        do conf itemsGatherAuto 2
+        	do conf itemsTakeAuto 2		
+        	do conf itemsGatherAuto 2
 		do conf itemsMaxWeight_sellOrStore 49
 		do conf lockMap none
 		do conf statsAddAuto 1
 		do conf statsAddAuto_list 30 agi, 30 dex, 30 str, 80 agi, 60 str, 90 agi, 90 str
 		do conf skillsAddAuto 1
-        do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
+        	do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
 		do conf partyAuto 1
 		do conf partyAutoShare 1
 		do conf partyAutoShareItem 1
@@ -587,7 +586,7 @@ automacro Config_Key {
 	ConfigKeyNotExist Leveling
 	run-once 1
 	call {
-		$wantedkey = $.ConfigKeyNotExistLastKey
+	$wantedkey = $.ConfigKeyNotExistLastKey
         $wantedvalue = none
         call AddMissingKey
 	}
