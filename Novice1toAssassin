@@ -10,9 +10,9 @@ automacro training {
     run-once 1
     call {
         [
-		do conf sleepTime 50000
-		do conf lockMap none
-		do conf saveMap none
+	do conf sleepTime 50000
+	do conf lockMap none
+	do conf saveMap none
         do conf autoTalkCont 0
         do conf route_randomWalk 0
         do conf attackAuto 0
@@ -358,11 +358,11 @@ automacro thiefquest0 {
 	overrideAI 1
 	run-once 1
 	call {
-		do move moc_prydb1 39 125
-		pause 2
-		release thiefquest0
+	do move moc_prydb1 39 125
+	pause 2
+	release thiefquest0
 	}
-	timeout 20
+timeout 20
 }
 
 ###############################
