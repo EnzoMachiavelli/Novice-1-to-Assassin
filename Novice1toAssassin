@@ -489,7 +489,7 @@ automacro thiefquest5 {
 		pause 10
 		do move payon
 		pause 3
-		release thiefquest4
+		release thiefquest5
 	}
 }
 		
