@@ -10,9 +10,9 @@ automacro training {
     run-once 1
     call {
         [
-	do conf sleepTime 50000
-	do conf lockMap none
-	do conf saveMap none
+		do conf sleepTime 50000
+		do conf lockMap none
+		do conf saveMap none
         do conf autoTalkCont 0
         do conf route_randomWalk 0
         do conf attackAuto 0
@@ -207,17 +207,16 @@ automacro training7 {
         do conf dcOnPM 0
         do conf dcOnMute 0
         do conf itemsTakeAuto 2
-        do conf itemsGatherAuto 2
+        do conf itemsGatherAuto 0
         do conf sitAuto_hp_lower 0
         do conf sitAuto_hp_upper 0
         do conf route_randomWalk 1
-	do conf lockMap new_1-3
+		do conf lockMap new_1-3
         do conf sellAuto 1
         do conf sellAuto_npc new_1-3 100 50
         do conf sellAuto_distance 8
         do conf sellAuto_npc_steps s e
         do conf storageAuto 0
-		do conf itemsGatherAuto 0
         ]
     }
 }
@@ -266,12 +265,12 @@ automacro training8 {
         do eq Merchant Manual
         ]
         pause 5
-	[       
-	do conf route_randomWalk 1
+		[       
+		do conf route_randomWalk 1
         do conf attackAuto 2
         do conf itemsGatherAuto 2
         do conf itemsMaxWeight_sellOrStore 15
-	]
+		]
 	}
 }
 
@@ -287,29 +286,29 @@ automacro training9 {
     overrideAI 1
     run-once 1
     call {
-	[
-	do conf route_randomWalk 0
-	do conf attackAuto 0
-	do conf itemsGatherAuto 0
-	]	
-	do move 107 41
-	pause 30
-	pause 2
-	do talknpc 97 41 c c r3 c 
-	pause 10
-	do talknpc 101 41 c c r3 c
-	pause 10
-	do talknpc 105 41 c c r3 c
-	pause 10
-	do autosell
-	pause 10
-	do talknpc 109 41 c c c c r3 c
-	pause 10
-	[
-	do conf route_randomWalk 1
-	do conf attackAuto 2
-	do conf itemsGatherAuto 2
-	]
+		[
+		do conf route_randomWalk 0
+		do conf attackAuto 0
+		do conf itemsGatherAuto 0
+		]	
+		do move 107 41
+		pause 30
+		pause 2
+		do talknpc 97 41 c c r3 c 
+		pause 10
+		do talknpc 101 41 c c r3 c
+		pause 10
+		do talknpc 105 41 c c r3 c
+		pause 10
+		do autosell
+		pause 10
+		do talknpc 109 41 c c c c r3 c
+		pause 10
+		[
+		do conf route_randomWalk 1
+		do conf attackAuto 2
+		do conf itemsGatherAuto 2
+		]
 	}
 }
 
@@ -323,16 +322,17 @@ automacro training10 {
     QuestInactive 7123, 7124, 7126, 7127, 1013
     JobLevel = 10
     JobID 0
+	InMap new_1-4
     overrideAI 1
     run-once 1
     call {
-	[
+		[
         do conf route_randomWalk 0
         do conf attackAuto 0
         do conf itemsGatherAuto 0
-	do conf lockMap none
+		do conf lockMap none
         ]
-	do move 95 175
+		do move 95 175
         pause 30
         do talknpc 100 29 c c c c c c r0 c r2 c c c c c
         pause 30
@@ -358,11 +358,15 @@ automacro thiefquest0 {
 	overrideAI 1
 	run-once 1
 	call {
-	do move moc_prydb1 39 125
-	pause 2
-	release thiefquest0
+		[
+		do conf lockMap moc_prydb1 
+		do conf lockMap_x 39 
+		do conf lockMap_y 125
+		]
+		pause 2
+		release thiefquest0
 	}
-timeout 20
+	timeout 20
 }
 
 ###############################
@@ -378,8 +382,13 @@ automacro thiefquest1 {
 	overrideAI 1
 	run-once 1
 	call {
-	do talknpc 39 129 c r0 c c r0 c c r0 c c c r0 c c c c r0 c c
-	pause 20
+		do talknpc 39 129 c r0 c c r0 c c r0 c c c r0 c c c c r0 c c
+		pause 20
+		[
+		do conf lockMap none
+		do conf lockMap_x none 
+		do conf lockMap_y none
+		]
 	}
 }
 
@@ -404,13 +413,13 @@ automacro thiefquest2 {
 		pause 4
 		[
 		do conf dcOnPM 0
-       		do conf dcOnMute 0
+        do conf dcOnMute 0
 		do conf attackAuto 2
-       		do conf route_randomWalk 1
-       		do conf sitAuto_hp_lower 0
-       		do conf sitAuto_hp_upper 0
-       		do conf sellAuto 0
-       		do conf storageAuto 0
+        do conf route_randomWalk 1
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf sellAuto 0
+        do conf storageAuto 0
 		do conf itemsGatherAuto 2
 		do conf attackAuto_party 1 
 		do conf autoResponse 1
@@ -418,8 +427,8 @@ automacro thiefquest2 {
 		do conf avoidGM_talk 0
 		do conf dcOnServerShutDown 1
 		do conf dcOnServerClose 1
-       		do conf itemsTakeAuto 2		
-       		do conf itemsGatherAuto 2
+        do conf itemsTakeAuto 2		
+        do conf itemsGatherAuto 2
 		do conf itemsMaxWeight_sellOrStore 49
 		do conf lockMap none
 		do conf statsAddAuto 1
@@ -469,15 +478,15 @@ automacro thiefquest5 {
 	call {
 		[
 		do conf attackAuto 0
-       		do conf route_randomWalk 0
+        do conf route_randomWalk 0
 		do conf itemsTakeAuto 0	
-        	do conf itemsGatherAuto 0
+        do conf itemsGatherAuto 0
 		do conf autoResponse 1
 		do conf autoTalkCont 1
 		]
 		do move moc_prydb1 39 125
 		pause 100
-        	do conf autoTalkCont 1
+        do conf autoTalkCont 1
 		pause 1
 		do talknpc 42 133
 		pause 0.8
@@ -505,6 +514,7 @@ automacro Meet_Kafra {
 	JobID 6
 	JobLevel = 1
 	InMap payon
+	ConfigKeyNot saveMap payon
 	NpcNotNear /Kafra Employee/i
 	run-once 1
 	call {
@@ -518,21 +528,27 @@ automacro Meet_Kafra2 {
 	JobID 6
 	JobLevel = 1
 	InMap payon
-	InSaveMap 0
+	ConfigKeyNot saveMap payon
 	NpcNear /Kafra Employee/i
 	run-once 1
 	call {
 		do talknpc 181 104 c r0 c
 		pause 5
+		do conf saveMap payon
+		call configsettings
+	}
+}
+
+macro configsettings {
 		[		
 		do conf dcOnPM 0
-        	do conf dcOnMute 0
+        do conf dcOnMute 0
 		do conf attackAuto 2
-        	do conf route_randomWalk 1
-        	do conf sitAuto_hp_lower 0
-        	do conf sitAuto_hp_upper 0
-        	do conf sellAuto 0
-        	do conf storageAuto 1
+        do conf route_randomWalk 1
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf sellAuto 0
+        do conf storageAuto 1
 		do conf itemsGatherAuto 2
 		do conf attackAuto_party 1 
 		do conf autoResponse 1
@@ -540,24 +556,23 @@ automacro Meet_Kafra2 {
 		do conf avoidGM_talk 1
 		do conf dcOnServerShutDown 1
 		do conf dcOnServerClose 1
-        	do conf itemsTakeAuto 2		
-        	do conf itemsGatherAuto 2
+        do conf itemsTakeAuto 2		
+        do conf itemsGatherAuto 2
 		do conf itemsMaxWeight_sellOrStore 49
 		do conf lockMap none
 		do conf statsAddAuto 1
 		do conf statsAddAuto_list 30 agi, 30 dex, 30 str, 80 agi, 60 str, 90 agi, 90 str
 		do conf skillsAddAuto 1
-        	do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
+        do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
 		do conf partyAuto 1
 		do conf partyAutoShare 1
 		do conf partyAutoShareItem 1
 		do conf RecoverAll.block Meat, Yellow Herb, White Herb, Red Herb, Apple, Monster's Feed, Potato, Red Potion, Orange Potion, Milk, Pet Food, Apple Juice, Aloe Leaflet, Candy, Candy Cane
 		do conf RecoverAll.hp < 70%
 		do conf RecoverAll.disabled 0
+		do conf partyAuto 0
 		]
-	}
 }
-
 ###############################
 ######Equip your OP gears######
 ###############################
@@ -579,28 +594,10 @@ call {
 ###############################
 #####Payon Dungeon 00 12-30####
 ###############################
-		
-automacro Config_Key {
-	exclusive 1
-	JobID 6
-	ConfigKeyNotExist Leveling
-	run-once 1
-	call {
-	$wantedkey = $.ConfigKeyNotExistLastKey
-        $wantedvalue = none
-        call AddMissingKey
-	}
-}		
-
-macro AddMissingKey {
-    add_key("$wantedkey","$wantedvalue")
-}
-
 automacro Payon_Dungeon {
 	exclusive 1
 	JobID 6
 	BaseLevel 10..30
-	ConfigKeyNot Leveling payon_cave
 	run-once 1
 	call map_change "payon_cave"
 }
@@ -614,14 +611,13 @@ automacro Elder_Willow {
 	JobID 6
 	BaseLevel > 30
 	JobLevel < 50
-	ConfigKeyNot Leveling elder_willow
 	run-once 1
 	call map_change "elder_willow"
 }
 
 macro map_change {
 	do conf -f Leveling $.param[0]
-	switch ( $.param[0] ) {
+	switch ($.param[0]) {
 		case (=~ /payon_cave/i) {
 			[
 			do conf lockMap pay_dun00
@@ -635,8 +631,8 @@ macro map_change {
 			do conf lockMap pay_fild08
 			do conf storageAuto_npc payon 181 104
 			do conf storageAuto_distance 8
-			do conf storageAuto_npc_type 1
-			]
+			do conf storageAuto_npc_type 1 
+			[
 		}
 	}
 }
