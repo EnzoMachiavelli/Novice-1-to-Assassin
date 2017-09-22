@@ -632,7 +632,7 @@ macro map_change {
 			do conf storageAuto_npc payon 181 104
 			do conf storageAuto_distance 8
 			do conf storageAuto_npc_type 1 
-			[
+			]
 		}
 	}
 }
