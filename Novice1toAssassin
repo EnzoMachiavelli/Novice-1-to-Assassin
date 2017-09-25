@@ -639,8 +639,32 @@ macro map_change {
 			do conf autoMoveOnDeath 1
 			do conf autoMoveOnDeath_map pay_fild08
 			]
+			}
+		case (=~ /assassin/i) {
+			[
+			do conf lockMap none
+			do conf storageAuto_npc morocc 156 97
+			do conf storageAuto_distance 8
+			do conf storageAuto_npc_type 1 
+			do conf sitAuto_hp_lower 0
+			do conf sitAuto_hp_upper 0
+			do conf autoMoveOnDeath 0
+			do conf autoMoveOnDeath_map none
+			do conf attackAuto 0
+			do conf route_randomWalk 0
+			]
+			do move morocc
 		}
 	}
+}
+
+automacro assassin {
+	exclusive 1
+	JobID 6
+	JobLevel == 50
+	InMap payon, pay_fild08
+	run-once 1
+	call map_change "assassin"
 }
 
 ###############################
@@ -661,11 +685,11 @@ automacro Meet_Kafra3 {
 	}
 }
 
-automacro Meet_Kafra4	 {
+automacro Meet_Kafra4 {
 	exclusive 1
 	JobID 6
-	JobLevel = 1
-	InMap payon
+	JobLevel = 50
+	InMap morocc
 	ConfigKeyNot saveMap morocc
 	NpcNear /Kafra Employee/i
 	run-once 1
@@ -673,17 +697,17 @@ automacro Meet_Kafra4	 {
 		do talknpc 156 97 c r0 c
 		pause 5
 		do conf saveMap morocc
-		call configsettings2
-		
+		pause 1
+		call configsettings2	
 	}
 }
 
 
-macro configsetting2 {
+macro configsettings2 {
 		[		
 		do conf dcOnPM 0
         do conf dcOnMute 0
-		do conf attackAuto 0
+		do conf attackAuto -1
         do conf route_randomWalk 0
         do conf sitAuto_hp_lower 0
         do conf sitAuto_hp_upper 0
@@ -722,12 +746,15 @@ automacro assassin_quest1 {
 exclusive 1
 overrideAI 1
 run-once 1
-InMap morocc
+ConfigKey saveMap morocc
 JobID 6
+QuestInactive 8001
 JobLevel == 50
 call {
 	do move in_moc_16 19 32
+	release assassin_quest1
 	}
+	timeout 60
 }
 
 ###############################
@@ -741,6 +768,7 @@ run-once 1
 InMap in_moc_16
 JobID 6
 NpcNear /Guildsman/i
+QuestInactive 8001
 call {
 	do talknpc 19 33 c c c c r0 n
 	}
@@ -754,8 +782,8 @@ automacro assassin_quest3 {
 exclusive 1
 overrideAI 1
 run-once 1
-InMap in_moc_16
 JobID 6
+QuestInactive 8001
 IsInCoordinate 19 76
 call {
 	do move 26 90
@@ -763,8 +791,8 @@ call {
 	do talk resp 0
 	pause 7
 	do talk resp 0
-	pause 3
-	move 18 167
+	pause 5
+	do move 20 159
 	}
 }
 
@@ -777,7 +805,7 @@ exclusive 1
 overrideAI 1
 run-once 1
 QuestActive 8001
-IsInCoordinate 18 167
+IsInCoordinate 20 159
 call {
 	do talknpc 21 170 c
 	}
@@ -812,6 +840,7 @@ QuestActive 8001
 IsInCoordinate 167 113
 call {
 	do move 148 80
+	pause 30
 	}
 }
 
@@ -853,9 +882,9 @@ IsInCoordinate 17 19
 call {
 	do move 16 31
 	pause 3
-	talknpc 19 33
-	pause 5
-	respawn
+	do talknpc 19 33
+	pause 8
+	do respawn
 	}
 }
 
