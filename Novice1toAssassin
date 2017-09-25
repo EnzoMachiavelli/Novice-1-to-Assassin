@@ -228,7 +228,7 @@ automacro training7 {
 automacro training8 {
     exclusive 1
 	QuestActive 7122
-    InInventory "Jellopy" >= 6
+    InInventory "Jellopy" >= 10
     JobID 0
     overrideAI 1
     run-once 1
@@ -573,6 +573,7 @@ macro configsettings {
 		do conf partyAuto 0
 		]
 }
+
 ###############################
 ######Equip your OP gears######
 ###############################
@@ -615,6 +616,7 @@ automacro Elder_Willow {
 	call map_change "elder_willow"
 }
 
+
 macro map_change {
 	do conf -f Leveling $.param[0]
 	switch ($.param[0]) {
@@ -632,10 +634,228 @@ macro map_change {
 			do conf storageAuto_npc payon 181 104
 			do conf storageAuto_distance 8
 			do conf storageAuto_npc_type 1 
+			do conf sitAuto_hp_lower 10
+			do conf sitAuto_hp_upper 40
+			do conf autoMoveOnDeath 1
+			do conf autoMoveOnDeath_map pay_fild08
 			]
 		}
 	}
 }
 
-#P.S. Still missing the Assassin quest sequence
-#For any errors pleave leave a message
+###############################
+######Save in Morocc First#####
+###############################
+
+automacro Meet_Kafra {
+	exclusive 1
+	JobID 6
+	JobLevel == 50
+	InMap morocc
+	ConfigKeyNot saveMap morocc
+	NpcNotNear /Kafra Employee/i
+	run-once 1
+	call {
+		do move 156 96 morocc
+		pause 5
+	}
+}
+
+automacro Meet_Kafra2 {
+	exclusive 1
+	JobID 6
+	JobLevel = 1
+	InMap payon
+	ConfigKeyNot saveMap morocc
+	NpcNear /Kafra Employee/i
+	run-once 1
+	call {
+		do talknpc 156 97 c r0 c
+		pause 5
+		do conf saveMap morocc
+		call configsettings2
+		
+	}
+}
+
+
+macro configsetting2 {
+		[		
+		do conf dcOnPM 0
+        do conf dcOnMute 0
+		do conf attackAuto 0
+        do conf route_randomWalk 0
+        do conf sitAuto_hp_lower 0
+        do conf sitAuto_hp_upper 0
+        do conf sellAuto 0
+        do conf storageAuto 1
+		do conf itemsGatherAuto 2
+		do conf attackAuto_party 1 
+		do conf autoResponse 1
+		do conf avoidGM_near 0
+		do conf avoidGM_talk 0
+		do conf dcOnServerShutDown 1
+		do conf dcOnServerClose 1
+        do conf itemsTakeAuto 0
+        do conf itemsGatherAuto 0
+		do conf itemsMaxWeight_sellOrStore 49
+		do conf lockMap none
+		do conf statsAddAuto 1
+		do conf statsAddAuto_list 30 agi, 30 dex, 30 str, 80 agi, 60 str, 90 agi, 90 str
+		do conf skillsAddAuto 1
+        do conf skillsAddAuto_list TF_MISS 10, TF_DOUBLE 10, TF_STEAL 10, TF_HIDING 8, TF_POISON 10, TF_DETOXIFY 1
+		do conf partyAuto 1
+		do conf partyAutoShare 1
+		do conf partyAutoShareItem 1
+		do conf RecoverAll.block Meat, Yellow Herb, White Herb, Red Herb, Apple, Monster's Feed, Potato, Red Potion, Orange Potion, Milk, Pet Food, Apple Juice, Aloe Leaflet, Candy, Candy Cane
+		do conf RecoverAll.hp < 70%
+		do conf RecoverAll.disabled 0
+		do conf partyAuto 0
+		]
+}
+
+###############################
+####Change Job to Assassin1####
+###############################
+
+automacro assassin_quest1 {
+exclusive 1
+overrideAI 1
+run-once 1
+InMap morocc
+JobID 6
+JobLevel == 50
+call {
+	do move in_moc_16 19 32
+	}
+}
+
+###############################
+####Change Job to Assassin2####
+###############################
+
+automacro assassin_quest2 {
+exclusive 1
+overrideAI 1
+run-once 1
+InMap in_moc_16
+JobID 6
+NpcNear /Guildsman/i
+call {
+	do talknpc 19 33 c c c c r0 n
+	}
+}
+
+###############################
+####Change Job to Assassin3####
+###############################
+
+automacro assassin_quest3 {
+exclusive 1
+overrideAI 1
+run-once 1
+InMap in_moc_16
+JobID 6
+IsInCoordinate 19 76
+call {
+	do move 26 90
+	pause 5
+	do talk resp 0
+	pause 7
+	do talk resp 0
+	pause 3
+	move 18 167
+	}
+}
+
+###############################
+####Change Job to Assassin4####
+###############################
+
+automacro assassin_quest4 {
+exclusive 1
+overrideAI 1
+run-once 1
+QuestActive 8001
+IsInCoordinate 18 167
+call {
+	do talknpc 21 170 c
+	}
+}
+
+###############################
+####Change Job to Assassin5####
+###############################
+
+automacro assassin_quest5 {
+exclusive 1
+overrideAI 1
+run-once 1
+QuestActive 8001
+IsInCoordinate 181 183
+call {
+	do move 182 170
+	pause 3
+	release assassin_quest5
+	}
+}
+
+###############################
+####Change Job to Assassin6####
+###############################
+
+automacro assassin_quest6 {
+exclusive 1
+overrideAI 1
+run-once 1
+QuestActive 8001
+IsInCoordinate 167 113
+call {
+	do move 148 80
+	}
+}
+
+###############################
+####Change Job to Assassin7####
+###############################
+
+automacro assassin_quest7 {
+exclusive 1
+overrideAI 1
+run-once 1
+QuestActive 8001
+NpcNear /Guildmaster/i
+call {
+	do talk resp 0
+	pause 2
+	do talk resp 0
+	pause 3
+	do talk resp 0
+	pause 2
+	do talk resp 0
+	pause 10
+	do talk resp 0
+	pause 2
+	do talk resp 1 		
+	}
+}
+
+###############################
+####Change Job to Assassin8####
+###############################
+
+automacro assassin_quest8 {
+exclusive 1
+overrideAI 1
+run-once 1
+QuestActive 8001
+IsInCoordinate 17 19
+call {
+	do move 16 31
+	pause 3
+	talknpc 19 33
+	pause 5
+	respawn
+}
+
+#For any errors, please elave a comment.
