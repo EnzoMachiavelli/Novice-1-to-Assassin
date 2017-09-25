@@ -647,7 +647,7 @@ macro map_change {
 ######Save in Morocc First#####
 ###############################
 
-automacro Meet_Kafra {
+automacro Meet_Kafra3 {
 	exclusive 1
 	JobID 6
 	JobLevel == 50
@@ -661,7 +661,7 @@ automacro Meet_Kafra {
 	}
 }
 
-automacro Meet_Kafra2 {
+automacro Meet_Kafra4	 {
 	exclusive 1
 	JobID 6
 	JobLevel = 1
@@ -856,6 +856,8 @@ call {
 	talknpc 19 33
 	pause 5
 	respawn
+	}
 }
+
 
 #For any errors, please elave a comment.
